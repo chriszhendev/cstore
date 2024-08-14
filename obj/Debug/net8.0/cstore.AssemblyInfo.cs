@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("cstore")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5843b93cbdf2b35e01165c81a6b1e2c5b38c9178")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+079534bf4093996ebc37d8d7e041318680b9ff60")]
 [assembly: System.Reflection.AssemblyProductAttribute("cstore")]
 [assembly: System.Reflection.AssemblyTitleAttribute("cstore")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
