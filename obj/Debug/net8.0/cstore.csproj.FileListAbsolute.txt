@@ -31,3 +31,4 @@ C:\Users\chris\Documents\GitHub\cstore\obj\Debug\net8.0\refint\cstore.dll
 C:\Users\chris\Documents\GitHub\cstore\obj\Debug\net8.0\cstore.pdb
 C:\Users\chris\Documents\GitHub\cstore\obj\Debug\net8.0\cstore.genruntimeconfig.cache
 C:\Users\chris\Documents\GitHub\cstore\obj\Debug\net8.0\ref\cstore.dll
+C:\Users\chris\Documents\GitHub\cstore\obj\Debug\net8.0\cstore.sourcelink.json
