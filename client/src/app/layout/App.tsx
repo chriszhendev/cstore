@@ -1,24 +1,16 @@
-import { useEffect, useState } from "react";
-import { Product } from "../../product";
+import Catalog from "../features/catalog/Catalog";
+import { Container, CssBaseline } from "@mui/material";
+import Header from "./Header";
 
 function App() {
-  const [products, setProducts] = useState<Product[]>([]);
-  useEffect(() => {
-    fetch("http://localhost:5000/api/products")
-      .then((response) => response.json())
-      .then((data) => setProducts(data));
-  }, []);
   return (
     <>
       <div>
-        <h1>CStore</h1>
-        <ul>
-          {products.map((item, index) => (
-            <li key={index}>
-              {item.name} - {item.price}
-            </li>
-          ))}
-        </ul>
+        <CssBaseline />
+        <Header />
+        <Container>
+          <Catalog />
+        </Container>
       </div>
     </>
   );
