@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Product } from "../../models/product";
 import {
   Avatar,
@@ -36,7 +37,9 @@ export default function ProductCard({ item }: Props) {
       </CardContent>
       <CardActions>
         <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+        <Button component={Link} to={`/catalog/${item.id}`} size="small">
+          Learn More
+        </Button>
       </CardActions>
     </Card>
   );
