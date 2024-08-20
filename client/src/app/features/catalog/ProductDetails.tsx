@@ -12,6 +12,9 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
+import agent from "../../api/agent";
+import NotFound from "../../errors/NotFound";
+import LoadingComponent from "../../layout/LoadingComponent";
 
 type Props = {};
 
@@ -21,15 +24,15 @@ export default function ProductDetails({}: Props) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:5000/api/products/${id}`)
-      .then((response) => setProduct(response.data))
-      .catch((error) => console.log(error))
-      .finally(() => setLoading(false));
+    id &&
+      agent.Catalog.details(parseInt(id))
+        .then((response) => setProduct(response))
+        .catch((error) => console.log(error.response))
+        .finally(() => setLoading(false));
   }, [id]);
 
-  if (loading) return <h3>Loading...</h3>;
-  if (!product) return <h3>Not Working</h3>;
+  if (loading) return <LoadingComponent />;
+  if (!product) return <NotFound />;
 
   return (
     <Grid container spacing={6}>
