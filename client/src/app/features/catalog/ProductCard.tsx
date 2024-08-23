@@ -10,12 +10,24 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
+import { useState } from "react";
+import agent from "../../api/agent";
+import { LoadingButton } from "@mui/lab";
 
 type Props = {
   item: Product;
 };
 
 export default function ProductCard({ item }: Props) {
+  const [loading, setLoading] = useState(false);
+
+  function handleAddItem(productId: number) {
+    setLoading(true);
+    agent.Basket.addItem(productId)
+      .catch((error) => console.log(error))
+      .finally(() => setLoading(false));
+  }
+
   return (
     <Card>
       <CardHeader
@@ -36,7 +48,13 @@ export default function ProductCard({ item }: Props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
+        <LoadingButton
+          loading={loading}
+          size="small"
+          onClick={() => handleAddItem(item.id)}
+        >
+          Add to cart
+        </LoadingButton>
         <Button component={Link} to={`/catalog/${item.id}`} size="small">
           Learn More
         </Button>
