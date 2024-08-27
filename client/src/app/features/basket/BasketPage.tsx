@@ -12,29 +12,18 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import { Basket } from "../../models/basket";
 import { Delete } from "@mui/icons-material";
+import { useStoreContext } from "../../context/StoreContext";
 
 export default function BasketPage() {
-  const [loading, setloading] = useState(true);
-  const [basket, setBasket] = useState<Basket | null>(null);
-
-  function handleDelteItem(productId: number, quantity?: number) {
-    setloading(true);
-    if (!quantity) quantity = 9999;
-    agent.Basket.removeItem(productId, quantity)
-      .catch((error) => console.log(error))
-      .finally(() => setloading(false));
-  }
-
-  useEffect(() => {
-    agent.Basket.get()
-      .then((basket) => setBasket(basket))
-      .catch((error) => console.log(error))
-      .finally(() => setloading(false));
-  }, []);
-
-  if (loading) return <LoadingComponent message="Loading basket..." />;
+  const { basket } = useStoreContext();
+  // function handleDelteItem(productId: number, quantity?: number) {
+  //   setloading(true);
+  //   if (!quantity) quantity = 9999;
+  //   agent.Basket.removeItem(productId, quantity)
+  //     .catch((error) => console.log(error))
+  //     .finally(() => setloading(false));
+  // }
 
   if (!basket)
     return <Typography variant="h3">Your basket is empty</Typography>;
@@ -68,12 +57,7 @@ export default function BasketPage() {
                 ${((item.price * item.quantity) / 100).toFixed(2)}
               </TableCell>
               <TableCell align="right">
-                <IconButton
-                  color="error"
-                  onClick={() => {
-                    handleDelteItem(item.productId);
-                  }}
-                >
+                <IconButton color="error">
                   <Delete />
                 </IconButton>
               </TableCell>
